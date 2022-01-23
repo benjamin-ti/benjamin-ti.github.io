@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+## Welcome to SBCBox
 
-You can use the [editor on GitHub](https://github.com/benjamin-ti/benjamin-ti.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+[SBCBox](https://github.com/benjamin-ti/sbcbox) is my Single Board Computer Code Box. A collection of code and docs used as a knowledge base for SBCs, in particular for 
+- BeagleBone **(Black)**
+- Raspberry _Pi_
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Example
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Simple `GPIO toggle` for BeagleBone Black
 
 ```markdown
-Syntax highlighted code block
+#!/bin/bash
 
-# Header 1
-## Header 2
-### Header 3
+echo "60" > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio60/direction
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+while true
+do
+    echo 1 > /sys/class/gpio/gpio60/value
+    sleep 1
+    echo 0 > /sys/class/gpio/gpio60/value
+    sleep 1
+done
 ```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/benjamin-ti/benjamin-ti.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
